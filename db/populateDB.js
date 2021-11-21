@@ -2,7 +2,10 @@ const positionModel = require('../models/position');
 const teamModel = require('../models/team');
 const data = require('./initialDBData.json');
 
-const sleep = (ms) => new Promise(res => setTimeout(res, ms));
+const sleep = (ms) =>
+  new Promise((res) => {
+    setTimeout(res, ms);
+  });
 
 module.exports = async () => {
   // I know that hard-coded sleep seconds is bad practice and I should use asynchronous code here,
@@ -29,4 +32,5 @@ module.exports = async () => {
     team.set({ positions: positions[team.id] });
     team.save();
   });
+  return teams;
 };
